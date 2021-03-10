@@ -99,6 +99,8 @@
 
 - (void)_dispatchMessage:(WVJBMessage*)message {
     NSString *messageJSON = [self _serializeMessage:message pretty:NO];
+    messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\u0300" withString:@"\\u0300"];
+    messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\u0301" withString:@"\\u0301"];
     messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\\" withString:@"\\\\"];
     messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
     messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\'" withString:@"\\\'"];
